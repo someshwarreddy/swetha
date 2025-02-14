@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>layoutflexcontinue</title>
+    <style>
+        .flex-container {
+            display: flex;
+            border: 2px solid red;
+            /* flex-direction: column-reverse; */
+            /* justify-content: space-around; */
+            flex-direction: row;
+            height: 600px;
+            flex-wrap: wrap;
+            /* justify-content: space-evenly; */
+            /* gap: 10px; */
+            /* align-items: flex-end;   */
+        }
+
+        .flex-container div {
+            flex: 1 1 220px;
+            border: 2px solid green;
+            border-radius: 5px;
+            margin: 5px;
+            text-align: center;
+            -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+            -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+            box-shadow: 5px 10px 6px 0px rgba(0, 0, 0, 0.75);
+            /* align-content: center; */
+            /* height: 100px; */
+        }
+
+        .child-three {
+            order: -1;
+            /* align-self: flex-start; */
+        }
+
+        .child-last {
+            order: 1;
+        }
+
+        .child-five {
+            order: 1;
+            /* align-self: flex-start; */
+        }
+
+        .child-two {
+            order: 3;
+            /* align-self: flex-end; */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="flex-container">
+
+        <div>
+            <h1>one</h1>
+        </div>
+        <div class="child-two">
+            <h1>two</h1>
+        </div>
+        <div class="child-three">
+            <h1>three</h1>
+        </div>
+        <div>
+            <h1>four</h1>
+        </div>
+        <div class="child-five">
+            <h1>five</h1>
+        </div>
+        <div class="child-last">
+            <h1>six</h1>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

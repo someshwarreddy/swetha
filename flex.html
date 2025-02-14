@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>layout</title>
+    <style>
+        .flex-container {
+            display: flex;
+            border: 2px solid red;
+            height: 600px;
+            justify-content: space-around;
+            justify-content: space-between;
+            justify-content: space-evenly;
+            justify-content: flex-start;
+            justify-content: flex-end;
+            justify-content: center;
+
+            /* controling the y axis */
+            align-items: flex-start;
+            -italignems: flex-end;
+            align-items: center;
+            /* width:100px; */
+        }
+
+        /* flex box adjust the elements x and y axis */
+
+        /* .child-three  {
+            flex-grow: 3;
+            flex: 1; 
+            border: 2px solid green; 
+            
+        }
+
+        .flex-container div {
+            flex-grow: 3;
+        }
+        .child-last {
+            flex-grow: 3;
+            flex-shrink: 1;
+            border: 2px solid green;
+        } */
+
+        .flex-container div {
+            /* flex: 1 1 100px; */
+            border: 2px solid green;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="flex-container">
+
+        <div>
+            content one
+        </div>
+        <div>
+            content two
+        </div>
+        <!-- <div class="child-three">
+            content three
+        </div>
+        <div>
+            content four
+        </div>
+        <div>
+            content five
+        </div>
+        <div class="child-last">
+            content six
+        </div> -->
+    </div>
+
+
+</body>
+
+</html>

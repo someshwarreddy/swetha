@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+           width: 1120px;
+           margin: 0 auto;
+        }
+
+        .navbar {
+            background-color: #582C4D;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            align-items: center;
+
+        }
+
+        .nav-list {
+            /* flex:1 1 600px; */
+            /* max-width: 600px; */
+            /* width: 600px; */
+            display: flex;
+            margin-left: auto;
+            color: white;
+            list-style-type: none;
+            padding: 10px;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            /* margin: 0 50px 0 50px ; */
+
+
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+    <nav class="navbar">
+        <a href="#">logo</a>
+        <ul class="nav-list">
+            <li class="nav-list-item"><a href="#" class="nav-link">Home</a></li>
+            <li class="nav-list-item"><a href="#" class="nav-link">About</a></li>
+            <li class="nav-list-item"><a href="#" class="nav-link">Contact</a></li>
+        </ul>
+    </nav>
+</div>
+</body>
+
+</html>
