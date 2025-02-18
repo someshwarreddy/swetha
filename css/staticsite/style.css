@@ -26,8 +26,9 @@
  /* logo */
 
  #logo {
-     /* max-width: 100px; */
-     flex: 1 1 auto;
+     max-width: 110px;
+     margin-right: 10px;
+     /* flex: 1 1 auto; */
  }
 
  /* navlist that is ul */
@@ -53,7 +54,7 @@
  }
 
  .section_one , .section_two{
-    background-color: #FBFFE4;
+    background-color: #02303d;
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
@@ -71,7 +72,7 @@
      background-color: #A3D1C6;
      /* position: absolute; */
      /* bottom: 0; */
-     width: 100%;
+     /* width: 100%; */
      display: flex;
      padding: 10px;
      flex-wrap: wrap;
@@ -89,6 +90,41 @@
  .footer>div>ul>li {
      list-style-type: none;
  }
+
+ .section_one {
+    min-height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+ }
+
+ .signup-form {
+    background-color: #ffffff;
+    padding: 15px;
+    display: flex;
+    margin: 10px;
+    border-radius: 15px;
+    max-width: 500px;
+    flex-wrap: wrap;
+ }
+.stay-updated , .sign-form-img {
+    
+}
+
+.sign-form-img {
+    /* display: flex; */
+    text-align: center;
+}
+.sign-form-img img {
+    max-width: 100%;
+}
+
+.product-discovery::before{
+    content: "*";
+    margin-right: 10px;
+    vertical-align: middle;
+}
 
  @media (min-width:500px) {
 
@@ -108,4 +144,8 @@
          color: #FBFFE4;
      }
 
+
+     .stay-updated , .sign-form-img {
+        flex: 1 1 50%;
+    }
  }
