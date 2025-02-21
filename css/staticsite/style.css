@@ -4,6 +4,8 @@
      box-sizing: border-box;
  }
 
+ @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+ 
  /* container width */
  .container {
      max-width: 1120px;
@@ -108,11 +110,18 @@
     max-width: 500px;
     flex-wrap: wrap;
  }
-.stay-updated , .sign-form-img {
+.stay-updated p {
     
+    font-family: "Roboto", serif;
+    font-optical-sizing: auto;
+    font-weight: 100;
+    font-style: normal;
+    font-variation-settings:
+      "wdth" 100;
+  
 }
 
-.sign-form-img {
+.sign-form-img  {
     /* display: flex; */
     text-align: center;
 }
