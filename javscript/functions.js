@@ -174,7 +174,7 @@ function a() {
     function b() {
         var v = 300;
         function c() {
-            var  v = 400;
+            var v = 400;
             console.log(v);
         }
         c()
@@ -184,3 +184,105 @@ function a() {
     console.log(v);
 }
 a();
+
+
+// closures
+
+// Closure Scope
+// arguments: { length: 0 }
+// this: window
+// a: fn()
+// b: fn()
+
+function a() {
+    var value = 10;
+    function b() {
+        console.log("function b", value);
+    }
+    return b;
+}
+
+var cv = a();
+cv();
+// Closure Scope
+
+function out(x) {
+    return function () {
+        console.log(x);
+    }
+}
+out(10)(); // 10 function is called immediately curry function
+var outvalue = out(10);
+outvalue();
+
+function counter(x) {
+    // let  count = 0;
+    return {
+        increment: function () {
+            x++;
+            console.log(x);
+        },
+        decrement: function () {
+            x--;
+            console.log(x);
+        }
+    }
+}
+
+var counterValue = counter(1);
+counterValue.increment();
+counterValue.increment();
+counterValue.increment();
+counterValue.decrement();
+
+for (let i = 0; i < 10; i++) {
+ 
+    setTimeout(function () {
+        console.log(i);
+    }, 1000);
+}
+
+// use iife to solve the above problem 
+(function () {
+    for (let i = 0; i < 10; i++) {
+        setTimeout(function () {
+            console.log(i);
+        }, 1000);
+    }
+})();
+// use clouser to solve the above problem
+
+    for (var i = 0; i < 10; i++) {
+        (function (i) {
+            setTimeout(function () {
+                console.log(i);
+            }, 1000);
+        })(i);
+    }
+
+
+// clousers memorize the scope of the function and the variables in the function
+// clousers are used to create private variables
+// clousers are used to create higher order functions
+// clousers are used to create partial functions
+// clousers are used to create currying functions
+// clousers are used to create memoization functions
+// clousers are used to create data hiding
+// clousers are used to create encapsulation
+
+// memoization
+// memoization is an optimization technique used primarily to speed up computer programs by storing the results of expensive function calls and returning the cached result when the same inputs occur again.
+
+function memoization() {
+    let cache = {};
+    return function (n) {
+        if (n in cache) {
+            console.log('from cache');
+            return cache[n];
+        } else {
+            console.log('calculating result');
+            cache[n] = n + 10;
+            return cache[n];
+        }
+    }
+}
