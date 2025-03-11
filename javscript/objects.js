@@ -158,19 +158,19 @@ let lan = { language: 'fr' };
 
 let arr = [1, 2, 3, 4, 5, 6];
 
-let freach = arr.forEach((value, index)=> {
+let freach = arr.forEach((value, index) => {
     return value;
     // Performs the specified action for each element in an array.
-    console.log( index, value)
+    console.log(index, value)
 })
 
 console.log(freach);
 
 let fnda = arr.find((value) => {
-   return value
+    return value
 })
 console.log(fnda)
-let filter = arr.filter((value)=> value)
+let filter = arr.filter((value) => value)
 console.log(filter)
 
 let map = arr.map(value => value)
@@ -193,19 +193,19 @@ let ma = 'manager'
 
 let unshiarr = productarray.unshift(ma); // simply high priority task 
 console.log(productarray);
-let emp = ['emp1','emp2', 'emp3','emp4']
+let emp = ['emp1', 'emp2', 'emp3', 'emp4']
 let splicearr = emp.splice(2, 1, 'newswetha') // adding and removing employee data at a time
 console.log(splicearr, emp)
 
-let slicearr = emp.slice(0,2); // which cut the values up to provided index postion and it does not modify the orginal array
+let slicearr = emp.slice(0, 2); // which cut the values up to provided index postion and it does not modify the orginal array
 console.log(slicearr, emp)
 
 // discounts 
 
-let originalarr = [100,200,300,];
+let originalarr = [100, 200, 300,];
 
-let discount = originalarr.map((price)=> price* 0.50);
-console.log(discount , originalarr);
+let discount = originalarr.map((price) => price * 0.50);
+console.log(discount, originalarr);
 
 let empsalarr = [{
     name: 'manager',
@@ -227,13 +227,13 @@ console.log(filterdemp);
 let findarr = empsalarr.find((empobj) => empobj.name == 'dev');
 console.log(findarr);
 
-let jumblearr = [10,9,6,4,5,2,1];
+let jumblearr = [10, 9, 6, 4, 5, 2, 1];
 
-console.log(jumblearr.sort((a,b)=> {
-    return a - b; 
-}))
+console.log(jumblearr.sort((a, b) => {
+    return a - b;
+}));
 
-let arrvalues = ['somesh', 'hi','no']
+let arrvalues = ['somesh', 'hi', 'no']
 
 console.log(arrvalues.includes('hi'));
 
@@ -243,4 +243,46 @@ let mr = [...originalarr]
 mr[1] = 600;
 // console.log(mergearr, mr);
 console.log(originalarr, mr);
+
+
+
+var abc = { a: 1 };
+
+var bac = { a: 1 };
+
+var one = 1;
+var two = 1;
+console.log(abc.a == bac.a);
+console.log(one == two);
+console.log([] == {}); // object references 
+console.log(typeof ([]) == typeof ({})); // comparing data types 
+
+console.log("2" == 2); // it is wrong answear because which is not checking type of the data;
+
+console.log("2" === 2); // answear is flase which is correct so === is comparing the data type of given value.
+
+
+console.log(null === undefined); //false
+
+console.log(typeof (null));
+
+var add = 55;
+console.log(add + 5); //number + number
+
+console.log(55 + +"5"); // here +converts the "5" string to number;
+console.log(55 + Number('5'));
+
+var to = 55 + '5';
+console.log(typeof(to));
+
+console.log(isNaN(NaN)); // here it checking only NaN value ;
+
+var total = 22 + undefined;
+
+console.log(x);
+
+
+
+
+
 
