@@ -39,15 +39,34 @@ async function fetchdata() {
         }
         let fectheddata = await fetchdata.json();
         let divs = document.getElementById('data') ;
-
-        for (const element of fectheddata) {
-            divs.innerHTML = element.title;
+        divs.style.display = 'flex'
+        divs.style.flexWrap= 'wrap'
+        // for (const element of fectheddata) {
+        //     let newdiv = document.createElement('div');
+        //     // console.log(value[0]);
+        //     newdiv.innerHTML = element?.id
+        //     divs.appendChild(newdiv)
     
-        }
-        console.log(typeof(fectheddata));
+        // }
+
+        fectheddata.forEach((value, index)=> {
+            let id = document.createElement('div');
+            let title = document.createElement('div');
+
+            id.innerHTML = `userid : ${fectheddata[index].id}`;
+            title.innerHTML = `title: ${value['title']}`;
+            divs.appendChild(id);
+            divs.appendChild(title);
+        });
+        
     } catch (error) {
         console.log(error)
     }
 }
 
 fetchdata();
+
+{
+    index: 'value'
+}
+
