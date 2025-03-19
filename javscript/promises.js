@@ -13,7 +13,8 @@ mypromise.then((data) => {
     .catch((err) => {
         console.log('catch' + err);
     })
-url = 'https://jsonplaceholder.typicode.com/todos/'
+// url = 'https://jsonplaceholder.typicode.com/todos/'
+url='https://fakestoreapi.com/products'
 
 fetch(url).then((response) => {
     console.log(response)
@@ -38,27 +39,57 @@ async function fetchdata() {
             throw new Error('api is failed to fecth response using async function')
         }
         let fectheddata = await fetchdata.json();
-        let divs = document.getElementById('data') ;
-        divs.style.display = 'flex'
-        divs.style.flexWrap= 'wrap'
+
+        // divs.style.display = 'flex'
+        // divs.style.flexWrap= 'wrap'
         // for (const element of fectheddata) {
         //     let newdiv = document.createElement('div');
         //     // console.log(value[0]);
         //     newdiv.innerHTML = element?.id
         //     divs.appendChild(newdiv)
-    
+
         // }
 
-        fectheddata.forEach((value, index)=> {
-            let id = document.createElement('div');
-            let title = document.createElement('div');
+        fectheddata.forEach((value, index) => {
+            let childdiv = document.createElement('div');
+            // let id = document.createElement('div');
+            // let title = document.createElement('div');
+            // let iscompleted = document.createElement('div')
 
-            id.innerHTML = `userid : ${fectheddata[index].id}`;
-            title.innerHTML = `title: ${value['title']}`;
-            divs.appendChild(id);
-            divs.appendChild(title);
+            // id.innerHTML = `userid : ${fectheddata[index].id}`;
+            // title.innerHTML = `title: ${value['title']}`;
+            // iscompleted.innerHTML = `iscomplted: ${value['completed']}`;
+
+            // childdiv.style.flex = `1 1 25%`;
+            // childdiv.style.height = '250px';
+            // childdiv.style.border = ` 1px solid red`;
+            childdiv.classList.add('child-div')
+
+            let pdiv = document.getElementById('user-info');
+
+            // pdiv.append(childdiv);
+            // childdiv.appendChild(title);
+            // childdiv.appendChild(id);
+            // childdiv.appendChild(iscompleted);
+            // let body = document.getElementById('body')
+
+            childdiv.innerHTML = `
+            
+                <div class= "title">
+                ${value['title']}
+                </div>    
+                <div class ='id'>
+                ${value['id']}
+                </div>
+                <div class='completed'> 
+                ${value['completed']}
+                </div>
+                <img src= ${value['image']} class="image-responsive">
+             
+             `
+            pdiv.appendChild(childdiv)
         });
-        
+
     } catch (error) {
         console.log(error)
     }

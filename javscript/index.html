@@ -1,13 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>js</title>
+    <style>
+        #user-info {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            /* flex-direction: column; */
+        }
 
+        .child-div {
+            flex: 1 1 25%;
+            border: 1px solid green;
+            padding: 20px;
+            min-height: 250px;
+            margin: 20px;
+        }
+
+        .id {
+            color: red;
+        }
+        .image-responsive {
+            max-width: 100%;
+        }
+
+    </style>
 </head>
-<body>
-    <div id="data"></div>
+
+<body id="body">
+    <div id="user-info">
+
+    </div>
     <script src="promises.js"></script>
 </body>
+
 </html>
