@@ -14,7 +14,7 @@ mypromise.then((data) => {
         console.log('catch' + err);
     })
 // url = 'https://jsonplaceholder.typicode.com/todos/'
-url='https://fakestoreapi.com/products'
+url = 'https://fakestoreapi.com/products'
 
 fetch(url).then((response) => {
     console.log(response)
@@ -66,6 +66,7 @@ async function fetchdata() {
             childdiv.classList.add('child-div')
 
             let pdiv = document.getElementById('user-info');
+            childdiv.addEventListener('click', getdescription);
 
             // pdiv.append(childdiv);
             // childdiv.appendChild(title);
@@ -82,22 +83,37 @@ async function fetchdata() {
                 ${value['id']}
                 </div>
                 <div class='completed'> 
-                ${value['completed']}
+                ${value['price']}
                 </div>
+                <div class='category'>
+                ${value['category']}    
+                </div>
+                <div class='description' onClick='getdescription()'>
+                ${value['description']}
+                </div>
+                <div class='product-image'>
                 <img src= ${value['image']} class="image-responsive">
+                </div>
              
              `
-            pdiv.appendChild(childdiv)
+            pdiv.appendChild(childdiv);
+
+           
+           
         });
 
     } catch (error) {
+
         console.log(error)
     }
+   
 }
 
 fetchdata();
 
-{
-    index: 'value'
+function getdescription() {
+   window.open('https://fakestoreapi.com/products')
 }
+
+
 

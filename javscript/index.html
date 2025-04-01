@@ -8,24 +8,54 @@
     <style>
         #user-info {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             flex-wrap: wrap;
-            /* flex-direction: column; */
         }
 
         .child-div {
-            flex: 1 1 25%;
-            border: 1px solid green;
+            flex: 1 1 250px;
+            /* border: 1px solid green; */
             padding: 20px;
-            min-height: 250px;
             margin: 20px;
         }
 
         .id {
             color: red;
         }
+        .product-image {
+            height: 200px;
+            display: flex;
+            justify-content: center;
+        
+        }
+        .description {
+            color: blue;
+            height: 20px;
+            overflow: hidden;
+            width: 100px;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            margin-bottom: 20px;
+
+        
+        }
         .image-responsive {
             max-width: 100%;
+            object-fit: contain;
+        
+        }
+
+        .child-div:hover {
+            /* cursor: pointer; */
+            box-shadow: 0 0 10px 0 rgba(227, 11, 11, 0.5);
+            transition: 0.3s;
+
+        }
+        .description:hover {
+            white-space: normal;
+            /* overflow: visible; */
+            text-overflow: clip;
+            cursor: pointer;
         }
 
     </style>
