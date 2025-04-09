@@ -53,6 +53,7 @@ async function fetchdata() {
         let search = document.getElementById('search');
         search.addEventListener('input', () => {
             let searchvalue = search.value.toLowerCase();
+            console.log(searchvalue)
             displayproducts(fectheddata, searchvalue)
 
         })
@@ -147,6 +148,9 @@ fetchdata();
 // function getdescription() {
 //    window.open('https://fakestoreapi.com/products')
 // }
+
+
+
 
 
 
