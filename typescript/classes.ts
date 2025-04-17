@@ -2,7 +2,7 @@
 interface personinterface {
     name: string; //this is type annotation
     age: number; //this is type annotation
-    greet: any //this is type annotation    
+    greet(): string ;//this is type annotation    
 }
 
 interface studentinterface {
@@ -29,17 +29,17 @@ interface courses {
 // }
 
 class person implements personinterface {
-    name: string; //this is type annotation
-    age: number; //this is type annotation
+   
 
-    constructor(name: string, age: number) {    //this is type annotation       
+    constructor(public name: string, public age: number) {    //this is type annotation       
         this.name = name; //this is type inference
         this.age = age; //this is type inference
 
     }
     //this is type inference  
-    greet() { //this is type inference
-        console.log(`Hello, my name is ${this.name} and I'm ${this.age} years old.`); //this is type inference
+    greet(): string { //this is type inference
+       
+        return `Hello, my name is ${this.name} and I'm ${this.age} years old.`; //this is type inference
     }
 }
 
@@ -50,11 +50,9 @@ let person2 = new person('someshwar', 30); //this is type inference
 
 class student extends person implements studentinterface {
    
-    id: number; //this is type annotation
-
     courses: courses[] = [] //this is type annotation
 
-    constructor(name: string, age: number, id: number,) { //this is type annotation
+    constructor(name: string, age: number, public id: number,) { //this is type annotation
         super(name, age); //this is type inference
         this.id = id; //this is type    
 
@@ -66,8 +64,8 @@ class student extends person implements studentinterface {
 
 
 
-    override greet(): void {
-        console.log(` ${super.greet()} and is ${this.age} years old.`); //this is type inference`)
+    override greet(): string {
+       return ` ${super.name} and is ${this.age} years old.` //this is type inference`)
     }
 }
 
