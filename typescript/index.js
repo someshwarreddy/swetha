@@ -59,3 +59,39 @@ function add(a, b) {
 }
 var result = add(10, 20); //this is type inference
 console.log(typeof result); //this is type inference
+var personone = {
+    credentials: "swetha", //this is type inference
+    age: 30, //this is type inference
+    greet: function () {
+        console.log('Hello!'); //this is type inference
+    },
+    //this is type inference
+}; //this is type annotation
+var persontwos = {
+    credentials: 'someshwar', //this is type inference
+    age: 30, //this is type inference
+    greet: function () {
+        console.log('Hello!'); //this is type inference
+    },
+    //this is type inference
+}; //this is type annotation
+var personthree = {
+    credentials: { id: 1, password: '' }, //this is type inference
+    age: 30, //this is type inference
+    greet: function () {
+        console.log('Hello!'); //this is type inference
+    },
+    //this is type inference
+}; //this is type annotation
+function add1(a, b) {
+    if (typeof a === 'string' && typeof b === 'string') {
+        return (a + b);
+    }
+    else if (typeof a === 'number' && typeof b === 'number') {
+        return (a + b);
+    }
+    else {
+        throw new Error('Invalid types for addition');
+    }
+} //this is type annotation
+var result1 = add1(20, 20); //this is type inference

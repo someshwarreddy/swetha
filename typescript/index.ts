@@ -110,3 +110,91 @@ let personthree: Person<user> = {
     //this is type inference
 } //this is type annotation
 
+
+
+function add1<T extends string | number>(a: T, b: T): T { //this is type annotation
+    if (typeof a === 'string' && typeof b === 'string') {
+        return (a + b) as T;
+    } else if (typeof a === 'number' && typeof b === 'number') {
+        return (a + b) as T;
+    } else {
+        throw new Error('Invalid types for addition');
+    }
+} //this is type annotation
+let result1 = add1(20, 20); //this is type inference
+
+
+type operation = 'add' | 'subtract' | 'multiply' | 'divide'; //this is type annotation
+
+// genric function
+ function add2<T extends number | string>(a: T, b: T, operation: operation): T { //this is type annotation
+    switch (operation) { //this is type inference       
+        case 'add':
+            if (typeof a === 'string' && typeof b === 'string') {
+                return (a + b) as T; //this is type inference
+            } else if (typeof a === 'number' && typeof b === 'number') {
+                return (a + b) as T; //this is type inference
+            }
+            throw new Error('Invalid types for addition');
+        case 'subtract':
+            if (typeof a === 'number' && typeof b === 'number') {
+                return (a - b) as T; //this is type inference
+            }
+            throw new Error('Invalid types for subtraction');
+        case 'multiply':
+            if (typeof a === 'number' && typeof b === 'number') {
+                return (a * b) as T; //this is type inference
+            }
+            throw new Error('Invalid types for multiplication');
+        case 'divide':
+            if (typeof a === 'number' && typeof b === 'number') {
+                return (a / b) as T; //this is type inference
+            }
+            if (b===0) {
+                throw new Error('Division by zero is not allowed'); //this is type inference
+                }
+            throw new Error('Invalid types for division');
+        default:
+            throw new Error('Invalid operation'); //this is type inference
+    }
+} //this is type annotation
+
+let result2 = add2(20, 20, 'add'); //this is type inference
+let result3 = add2('20', '20', 'add'); //this is type inference
+let result4 = add2(20, 20, 'subtract'); //this is type inference
+let result5 = add2(20, 20, 'multiply'); //this is type inference
+let result6 = add2(20, 20, 'divide'); //this is type inference
+let result7 = add2(20, 0, 'divide'); //this is type inference
+
+
+let url: string = 'https://www.google.com'; //this is type annotation
+
+ async function fetchData<T>(url: string): Promise<any> { //this is type annotation
+    try { //this is type inference
+        let response = await fetch(url); //this is type inference
+        if (!response.ok) { //this is type inference
+            throw new Error('Network response was not ok'); //this is type inference
+        }
+        let data = await response.json(); //this is type inference
+        return data; //this is type inference
+    }
+    catch (error) { //this is type inference
+        console.error('There has been a problem with your fetch operation:', error); //this is type inference
+    }
+} //this is type annotation
+
+let data = fetchData<number>(url); //this is type inference
+data.then((data) => { //this is type inference
+    console.log(data); //this is type inference
+})
+.catch((error) => { //this is type inference
+    console.error('Error:', error); //this is type inference
+}); //this is type annotation
+
+(async () => { //this is type annotation
+    let data = await fetchData<number>(url); //this is type inference   
+    console.log(data); //this is type 
+    data.forEach((item: number) => { //this is type inference
+        console.log(item); //this is type inference
+})
+})() //this is type annotation
