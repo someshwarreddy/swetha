@@ -48,7 +48,7 @@ person1.greet(); //this is type inference
 
 let person2 = new person('someshwar', 30); //this is type inference
 
-class student extends person implements studentinterface {
+class student extends person  {
    
     courses: courses[] = [] //this is type annotation
 
@@ -58,7 +58,7 @@ class student extends person implements studentinterface {
 
     }
 
-    addCourse(course: courses) { //this is type annotation
+    enroll(course: courses) { //this is type annotation
         this.courses.push(course); //this is type inference 
     }
 
@@ -75,21 +75,49 @@ student1.greet()//this is type inference
 let student2 = new student('someshwar', 30, 2); //this is type inference
 student2.greet()//this is type inference
 
-let course = { //this is type annotation
+let course: courses = { //this is type annotation
     name: 'typescript', //this is type annotation
     id: 1 //this is type annotation
 }
-let cour = {
+let cour : courses = {
     name: 'ja',
-    id: 2
+      id: 2 //this is type annotation   
 }
 
-student1.addCourse(course); //this is type inference
-student1.addCourse(cour); //this is type inference
+student1.enroll(course); //this is type inference
+student1.enroll(cour); //this is type inference
 
 console.log(student1.courses); //this is type inference
 console.log(student2.courses); //this is type inference
 
-class teacher extends person {
+
+class Manager<T, K extends keyof T> { //this is type annotation
+    private studentdata: T[] = []; //this is type annotation
+
+    constructor(private idkey: K) { //this is type annotation
+         //this is type inference
+    }
+    add(item: T) { //this is type annotation
+        this.studentdata.push(item); //this is type inference
+    }
+
+    get(id: T[K]): T | undefined { //this is type annotation
+        return this.studentdata.find(item => item[this.idkey] === id); //this is type inference
+    }
+    remove(id: T[K]): void { //this is type annotation
+        this.studentdata = this.studentdata.filter(item => item[this.idkey] !== id); //this is type inference   
+
+        }  
+  getAll(): T[] { //this is type annotation
+        return this.studentdata; //this is type inference
+    }
 
 }
+
+// let studentmanager = new Manager<student, 'id', student>('id'); //this is type annotation
+let studentmanager = new Manager<student, 'id'>('id'); //this is type annotation
+studentmanager.add(student1); //this is type inference
+studentmanager.add(student2); //this is type inference
+studentmanager.getAll().forEach(student => { //this is type inference){
+    console.log(`Name: ${student.name}, Age: ${student.age}, ID: ${student.id}`); //this is type inference
+}); //this is type inference
