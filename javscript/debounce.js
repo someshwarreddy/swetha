@@ -16,6 +16,7 @@ async function fetchData(query) {
 
             let filteredProducts = products.filter((product) => {
                 return product.title.toLowerCase().includes(query);
+                
             });
 
             filteredProducts.length === 0 ? searchfail() : pdiv.innerHTML = '';
