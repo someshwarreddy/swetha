@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Advanced RxJS Notes</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 2rem auto;
+      padding: 2rem;
+      max-width: 900px;
+      line-height: 1.7;
+      background: linear-gradient(to bottom right, #000000 10%, #f0c040 90%);
+      color: #333;
+      background-attachment: fixed;
+      background-size: cover;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    }
+    h1, h2 {
+      color: #f0c040;
+    }
+    h1 {
+      text-align: center;
+      border-bottom: 2px solid #f0c040;
+      padding-bottom: 0.5rem;
+    }
+    pre {
+      background-color: #222;
+      color: #f0f0f0;
+      padding: 1rem;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+    code {
+      font-family: 'Courier New', Courier, monospace;
+    }
+    hr {
+      margin: 2rem 0;
+      border: none;
+      border-top: 1px solid #f0c040;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+    }
+    table, th, td {
+      border: 1px solid #f0c040;
+    }
+    th, td {
+      padding: 0.5rem;
+      text-align: left;
+      color: #000;
+      background-color: #fff9e6;
+    }
+  </style>
+</head>
+<body>
+  <h1>Advanced RxJS Notes</h1>
+  <!-- content remains unchanged below -->
+
+
+  <h2>1. Subject & BehaviorSubject</h2>
+  <p><strong>Subject:</strong></p>
+  <ul>
+    <li>Acts as both an Observer and Observable.</li>
+    <li>Can multicast to multiple observers.</li>
+    <li>Does <strong>not store</strong> the latest value.</li>
+  </ul>
+  <pre><code>const subject = new Subject&lt;number&gt;();
+subject.subscribe(val =&gt; console.log('A:', val));
+subject.next(1); // A: 1</code></pre>
+
+  <p><strong>BehaviorSubject:</strong></p>
+  <ul>
+    <li>Requires an initial value.</li>
+    <li>Stores the <strong>latest emitted value</strong>.</li>
+    <li>New subscribers get the last value instantly.</li>
+  </ul>
+  <pre><code>const behavior = new BehaviorSubject&lt;number&gt;(0);
+behavior.next(1);
+behavior.subscribe(val =&gt; console.log('B:', val)); // B: 1</code></pre>
+
+  <hr />
+
+  <h2>2. ReplaySubject & AsyncSubject</h2>
+  <p><strong>ReplaySubject:</strong></p>
+  <ul>
+    <li>Replays a specified number of values to new subscribers.</li>
+  </ul>
+  <pre><code>const replay = new ReplaySubject&lt;number&gt;(2);
+replay.next(1); replay.next(2); replay.next(3);
+replay.subscribe(val =&gt; console.log('Replay:', val)); // 2, 3</code></pre>
+
+  <p><strong>AsyncSubject:</strong></p>
+  <ul>
+    <li>Emits only the <strong>last value</strong> upon completion.</li>
+  </ul>
+  <pre><code>const async = new AsyncSubject&lt;number&gt;();
+async.subscribe(val =&gt; console.log('Async:', val));
+async.next(1); async.next(2);
+async.complete(); // Async: 2</code></pre>
+
+  <hr />
+
+  <h2>3. Managing State with Subjects</h2>
+  <p>Use <code>BehaviorSubject</code> for reactive state and immutable updates.</p>
+  <pre><code>private state$ = new BehaviorSubject&lt;State&gt;({ count: 0 });
+
+updateState(partial: Partial&lt;State&gt;) {
+  const current = this.state$.value;
+  this.state$.next({ ...current, ...partial });
+}</code></pre>
+
+  <hr />
+
+  <h2>4. Schedulers In-Depth</h2>
+  <ul>
+    <li><code>asyncScheduler</code> – like <code>setTimeout</code></li>
+    <li><code>queueScheduler</code> – synchronous, recursive</li>
+    <li><code>asapScheduler</code> – microtask</li>
+    <li><code>animationFrameScheduler</code> – synced with browser repaint</li>
+  </ul>
+  <pre><code>of(1, 2, 3, asyncScheduler).subscribe(console.log);</code></pre>
+
+  <hr />
+
+  <h2>5. Multi-casting</h2>
+  <p>Share one observable execution with multiple subscribers.</p>
+  <pre><code>const shared = source$.pipe(share());
+shared.subscribe(...);</code></pre>
+
+  <p>Operators:</p>
+  <ul>
+    <li><code>share()</code></li>
+    <li><code>shareReplay()</code></li>
+    <li><code>publish()</code> (with <code>refCount()</code>)</li>
+  </ul>
+
+  <hr />
+
+  <h2>6. Real-world Tips & Tricks</h2>
+  <ul>
+    <li>Always <strong>unsubscribe</strong> (or use <code>takeUntil</code>).</li>
+    <li>Use <code>tap()</code> for debugging.</li>
+    <li>Avoid nested subscriptions – use flattening operators.</li>
+    <li>Combine streams with <code>combineLatest</code>, <code>withLatestFrom</code>.</li>
+  </ul>
+
+  <hr />
+
+  <h2>7. Testing & Marble Diagrams</h2>
+  <p>Simulate observables over time:</p>
+  <ul>
+    <li><code>-</code> time frame</li>
+    <li><code>a|</code> emits 'a', then completes</li>
+    <li><code>#</code> error</li>
+  </ul>
+  <pre><code>cold('--a--b--|') // emit 'a' at frame 2, 'b' at frame 5</code></pre>
+  <p>Libraries: <code>rxjs/testing</code>, <code>jest-marbles</code>, <code>rxjs-marbles</code></p>
+
+  <hr />
+
+  <h2>8. Testing with Subscribe & Assert</h2>
+  <pre><code>it('should emit values', done => {
+  of(1, 2, 3).subscribe({
+    next: val => expect(val).toBeGreaterThan(0),
+    complete: () => done()
+  });
+});</code></pre>
+
+  <hr />
+
+  <h2>9. Advanced Operators</h2>
+  <table border="1" cellspacing="0" cellpadding="6">
+    <tr><th>Operator</th><th>Description</th></tr>
+    <tr><td>switchMap</td><td>cancels previous observable</td></tr>
+    <tr><td>mergeMap</td><td>concurrent inner observables</td></tr>
+    <tr><td>concatMap</td><td>queues observables</td></tr>
+    <tr><td>exhaustMap</td><td>ignores new until current completes</td></tr>
+    <tr><td>groupBy, buffer, window</td><td>advanced stream control</td></tr>
+  </table>
+  <pre><code>source$.pipe(
+  switchMap(val => ajax.getJSON(`/api/${val}`))
+)</code></pre>
+</body>
+</html>
