@@ -21,7 +21,7 @@ export const routes: Routes = [
             {path: 'settings', component: SettingsComponent },
         ]
     },
-    { path: 'contact:id', component: ContactComponent },
+    { path: 'contact/:id', component: ContactComponent },
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: '**', component: PagenotfoundComponent } // Wildcard route for a 404 page
 
