@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
+import { ContactComponent } from "../contact/contact.component";
 
 @Component({
   selector: 'app-home',
-  imports: [RouterOutlet, CommonModule , RouterLink],
+  imports: [RouterOutlet, CommonModule, RouterLink, ContactComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
@@ -16,5 +17,7 @@ products = [
   { id: 3, name: 'Product 4', price: 40 },
   
 ]
+
+id :number= 1
 
 }
