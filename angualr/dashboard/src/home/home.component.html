@@ -7,5 +7,7 @@
   <p>{{ product.price }}</p>
   <a [routerLink]="['/contact', product.id]">productdetails</a>
 </div>
-<app-contact [idn]='id'></app-contact>
+<app-contact [idn]="'someone'" (childvalue)="fromchild($event)"></app-contact>
+<app-aboutus [idn]="'i am from parent value recieved by my child'"></app-aboutus>
+{{parentvalue}}
 <router-outlet></router-outlet>

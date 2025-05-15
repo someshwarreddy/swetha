@@ -5,9 +5,11 @@
  <a [routerLink]="['/contact', 2]">productdetails</a><br>
   <a [routerLink]="['/contact', 3]">productdetails</a>
 
-<router-outlet></router-outlet> -->
+ -->
 <div>swetha</div>
 
-<div *ngIf="idn != null && idn > 0">
+<div *ngIf="idn?.length">
 {{idn}}
 </div>
+<!-- {{idn}} -->
+ <button (click)="toparent()">click</button>
