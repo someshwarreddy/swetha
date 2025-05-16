@@ -1,1 +1,80 @@
-<p>settings works!</p>
+
+
+<div class="container">
+  
+  <!-- Click Event Binding -->
+  <div class="event-box">
+    <button (click)="onClick()">Click me</button>
+  </div>
+
+  <!-- Mouseover Event Binding -->
+  <div class="event-box" (mouseover)="onMouseOver()">
+    Hover over me
+  </div>
+
+  <!-- Mouseleave Event Binding -->
+  <div class="event-box" (mouseleave)="onMouseLeave()">
+    Mouse leave the div
+  </div>
+
+  <!-- Keydown Event Binding -->
+  <input class="input-box" (keydown)="onKeyDown($event)" placeholder="Press any key">
+
+  <!-- Keyup Event Binding -->
+  <input class="input-box" (keyup)="onKeyUp($event)" placeholder="Release any key">
+
+  <!-- Focus Event Binding -->
+  <input class="input-box" (focus)="onFocus()" placeholder="Focus on me">
+
+  <!-- Blur Event Binding -->
+  <input class="input-box" (blur)="onBlur()" placeholder="Blur from me">
+
+  <!-- Submit Event Binding -->
+  <form (submit)="onSubmit($event)">
+    <button type="submit">Submit</button>
+  </form>
+
+  <!-- Change Event Binding -->
+  <select (change)="onSelectChange($event)" placeholder="option" title="Select an option">
+    <option value="1">Option 1</option>
+    <option value="2">Option 2</option>
+  </select>
+
+  <!-- Input Event Binding -->
+  <input class="input-box" (input)="onInputChange($event)" placeholder="Type something">
+
+  <!-- Double Click Event Binding -->
+  <button (dblclick)="onDoubleClick()">Double Click me</button>
+
+  <!-- Scroll Event Binding -->
+  <div class="scroll-box" (scroll)="onScroll($event)">
+    <div style="height: 500px;">Scroll inside this box!</div>
+  </div>
+
+  <!-- Resize Event Binding -->
+  <div class="resize-box" style="resize: both; overflow: auto; width: 200px; height: 100px;" (resize)="onResize($event)">
+    Resize me!
+  </div>
+
+  <!-- Drag Event Binding -->
+  <div class="drag-box" draggable="true" (dragstart)="onDragStart($event)" (dragend)="onDragEnd($event)">
+    Drag me!
+  </div>
+
+  <!-- Touchstart Event Binding -->
+  <div class="event-box" (touchstart)="onTouchStart($event)">
+    Touch me
+  </div>
+
+  <!-- Touchend Event Binding -->
+  <div class="event-box" (touchend)="onTouchEnd($event)">
+    Release touch
+  </div>
+
+  <!-- Wheel Event Binding -->
+  <div class="event-box" (wheel)="onWheel($event)">
+    Wheel Scroll
+  </div>
+
+</div>
+
