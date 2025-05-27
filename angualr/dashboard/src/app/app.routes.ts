@@ -7,6 +7,7 @@ import { PagenotfoundComponent } from '../pagenotfound/pagenotfound.component';
 import { ProfilesComponent } from './profiles/profiles.component';
 import { SettingsComponent } from './settings/settings.component';
 import { HomechildComponent } from './homechild/homechild.component';
+import { LifecycleComponent } from './lifecycle/lifecycle.component';
 
 export const routes: Routes = [
     { path: 'home', component: HomeComponent,
@@ -21,8 +22,9 @@ export const routes: Routes = [
             {path: 'settings', component: SettingsComponent },
         ]
     },
+    {path: 'lifecycle', component: LifecycleComponent },
     { path: 'contact/:id', component: ContactComponent },
-    { path: '', redirectTo: 'home', pathMatch: 'full' },
+    { path: '', redirectTo: 'lifecycle', pathMatch: 'full' },
     { path: '**', component: PagenotfoundComponent } // Wildcard route for a 404 page
 
 ];

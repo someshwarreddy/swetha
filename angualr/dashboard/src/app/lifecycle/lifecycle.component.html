@@ -1,0 +1,8 @@
+
+<input type="text" [(ngModel)]="value" placeholder="Enter your name" />
+<app-projection [title]="value">
+    <h1>Welcome, {{ message }}!</h1>
+    <p #projected>This is a simple projection example.</p>
+</app-projection>
+
+<button (click)="message= 'i am updated'">Log Projected Content</button>
