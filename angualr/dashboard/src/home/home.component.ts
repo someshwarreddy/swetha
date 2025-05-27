@@ -3,10 +3,12 @@ import { Component } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { ContactComponent } from "../contact/contact.component";
 import { AboutusComponent } from "../aboutus/aboutus.component";
+import { SignalsComponent } from "../signals/signals.component";
+import { UsersComponent } from "../app/users/users.component";
 
 @Component({
   selector: 'app-home',
-  imports: [RouterOutlet, CommonModule, RouterLink, ContactComponent, AboutusComponent],
+  imports: [RouterOutlet, CommonModule, RouterLink, ContactComponent, AboutusComponent, UsersComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })

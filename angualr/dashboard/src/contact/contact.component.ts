@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, inject, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
 import { ActivatedRoute, RouterLink, RouterOutlet } from '@angular/router';
 import { SiblingsService } from '../siblings.service';
 @Component({
@@ -12,7 +12,7 @@ import { SiblingsService } from '../siblings.service';
 export class ContactComponent implements OnInit, OnChanges {
   @Input() idn: string | undefined;
   @Output() childvalue = new EventEmitter<string>();
-
+  serveice = inject(SiblingsService)
   id: number = 0;
   constructor(private routes: ActivatedRoute,
     private servicesibling: SiblingsService) {

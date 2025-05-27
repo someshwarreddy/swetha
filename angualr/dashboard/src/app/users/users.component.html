@@ -1,0 +1,12 @@
+<h1>users</h1>
+<button (click)="getusers()">loadusers</button>
+<button (click)="adduser()">adduser</button>
+<div *ngIf="loading()">Loading...</div>
+<div *ngIf="error()">{{error()}}</div>
+<ul>
+  <li *ngFor="let user of users()">
+    {{user.name}} - {{user.email}}
+    <button (click)="updateuser(user.id)">updateuser</button>
+    <button (click)="deleteuser(user.id)">Delete</button>
+  </li>
+</ul>
