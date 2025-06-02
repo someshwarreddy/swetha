@@ -1,0 +1,52 @@
+<!-- <form>
+    <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" [formControl]="name" >
+    </div>
+
+    <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" [formControl]="email">
+    </div>
+    <div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" [formControl]="password" >
+    </div>
+
+    <div>
+        <label for="confirmPassword">Confirm Password:</label>
+        <input type="password" id="confirmPassword" [formControl]="confirmPassword">
+    </div>
+
+    <button type="button" (click)="frmctrl()">Submit</button>
+
+
+</form> -->
+<p>reactivefrms with formgroup sign up</p>
+<form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+    <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" formControlName="name">
+    </div>
+
+    <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" formControlName="email">
+    </div>
+
+    <div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" formControlName="password">
+    </div>
+
+    <div>
+        <label for="confirmPassword">Confirm Password:</label>
+        <input type="password" id="confirmPassword" formControlName="confirmPassword">
+    </div>
+    <div *ngIf="signupForm.invalid && (signupForm.dirty || signupForm.touched)">
+        <p class="error">Please fill out the form correctly.</p>
+    </div>
+
+    <button type="submit" [disabled]="signupForm.invalid">Submit</button>
+    <button type="button" (click)="onReset()">Reset</button>
+</form>

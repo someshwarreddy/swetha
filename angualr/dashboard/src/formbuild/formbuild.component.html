@@ -1,0 +1,44 @@
+<p>formbuild works!</p>
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+
+    <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" formControlName="firstName">
+    </div>
+
+    <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" formControlName="lastName">
+    </div>
+    <fieldset formGroupName="address">
+        <label for="street">Street:</label>
+        <input type="text" id="street" formControlName="street">
+        <label for="city">City:</label>
+        <input type="text" id="city" formControlName="city">
+        <label for="state">State:</label>
+        <input type="text" id="state" formControlName="state">
+        <label for="zip">Zip:</label>
+        <input type="text" id="zip" formControlName="zip">
+    </fieldset>
+     <div formArrayName="alias">
+        <h2>Aliases</h2>
+        <button type="button" (click)="addAlias()">+ Add another alias</button>
+
+        @for (alias of aliases.controls; track $index; let i = $index) {
+        <div>
+            <!-- The repeated alias template -->
+            <label for="alias-{{ i }}">Alias:</label>
+            <input id="alias-{{ i }}" type="text" [formControlName]="i" />
+            <button type="button" (click)="removeAlias(i)">removeAlias</button>
+            <button type="button" (click)="upadateAlias(i)">updateAlias</button>
+
+        </div>
+        }
+    </div>
+    <div *ngIf="profileForm.invalid && (profileForm.dirty || profileForm.touched)">
+        <p class="error">Please fill out the form correctly.</p>
+    </div>  
+    <button type="submit" [disabled]="profileForm.invalid">Submit</button>
+    <button type="button" (click)="onReset()">Reset</button>
+    <button type="button" (click)="upadate()">update</button>
+</form>

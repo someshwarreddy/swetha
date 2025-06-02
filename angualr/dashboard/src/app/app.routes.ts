@@ -8,6 +8,10 @@ import { ProfilesComponent } from './profiles/profiles.component';
 import { SettingsComponent } from './settings/settings.component';
 import { HomechildComponent } from './homechild/homechild.component';
 import { LifecycleComponent } from './lifecycle/lifecycle.component';
+import { TemplatedrivenComponent } from '../templatedriven/templatedriven.component';
+import { ReactivefrmsComponent } from '../reactivefrms/reactivefrms.component';
+import { FormbuildComponent } from '../formbuild/formbuild.component';
+
 
 export const routes: Routes = [
     { path: 'home', component: HomeComponent,
@@ -22,9 +26,9 @@ export const routes: Routes = [
             {path: 'settings', component: SettingsComponent },
         ]
     },
-    {path: 'lifecycle', component: LifecycleComponent },
+    {path: 'templateforms', component: FormbuildComponent },
     { path: 'contact/:id', component: ContactComponent },
-    { path: '', redirectTo: 'lifecycle', pathMatch: 'full' },
+    { path: '', redirectTo: 'templateforms', pathMatch: 'full' },
     { path: '**', component: PagenotfoundComponent } // Wildcard route for a 404 page
 
 ];
