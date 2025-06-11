@@ -1,0 +1,52 @@
+<div class="header">
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="form-card">
+  <h2>Create User</h2>
+
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input id="name" type="text" formControlName="name" />
+    <div class="error" *ngIf="isTouchedInvalid('name')">
+      <span *ngIf="getErrors('name')?.['required']">Name is required.</span>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input id="email" type="email" formControlName="email" />
+    <div class="error" *ngIf="isTouchedInvalid('email')">
+      <span *ngIf="getErrors('email')?.['emailTaken']">Email already exists.</span>
+
+      <span *ngIf="getErrors('email')?.['required']">Email is required.</span>
+      <span *ngIf="getErrors('email')?.['email']">Enter a valid email address.</span>
+      
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input id="password" type="password" formControlName="password" />
+    <div class="error" *ngIf="isTouchedInvalid('password')">
+      <span *ngIf="getErrors('password')?.['required']">Password is required.</span>
+      <span *ngIf="getErrors('password')?.['minlength']">Minimum 6 characters.</span>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="role">Role</label>
+    <select id="role" formControlName="role">
+      <option value="user">User</option>
+      <option value="admin">Admin</option>
+    </select>
+    <div class="error" *ngIf="isTouchedInvalid('role')">
+      <span *ngIf="getErrors('role')?.['required']">Role is required.</span>
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="userForm.invalid">Submit</button>
+</form>
+</div>
+<!-- success mesage -->
+<div class="success-message" *ngIf="successMessage">
+  <p>User register successfully</p>
+  </div>
+

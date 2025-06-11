@@ -1,0 +1,25 @@
+<p>login works!</p>
+<div class="header">
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="form-card">
+        <h2>Login</h2>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input id="email" type="email" formControlName="email" />
+            <div class="error" *ngIf="isTouchedInvalid('email')">
+                <span *ngIf="getErrors('email')?.['required']">Email is required.</span>
+                <span *ngIf="getErrors('email')?.['email']">Enter a valid email address.</span>
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input id="password" type="password" formControlName="password" />
+            <div class="error" *ngIf="isTouchedInvalid('password')">
+                <span *ngIf="getErrors('password')?.['required']">Password is required.</span>
+                <span *ngIf="getErrors('password')?.['minlength']">Minimum 6 characters.</span>
+            </div>
+        </div>
+        <button type="submit" [disabled]="userForm.invalid">Submit</button>
+    </form>
+</div>
