@@ -8,7 +8,13 @@ import { fauthInterceptor } from './fauth.interceptor';
 
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes),
+  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes), 
   provideHttpClient(withInterceptors([fauthInterceptor])),
+  // class based 
+  // {
+  //   provide: HTTP_INTERCEPTORS,
+  //   useClass: AuthInterceptorService,
+  //   multi: true
+  // },
   ]
 };
